@@ -1,0 +1,42 @@
+﻿@model IEnumerable<SalesV1.Models.StoreViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>All Stores</h2>
+<p>&nbsp;</p>
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-success" })
+</p>
+
+<h3 style="color:red">@TempData["Message"]</h3>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.StoreAddress)
+        </th>
+        <th bgcolor="White" colspan="2" class="col-lg-1 col-centered"><p align="center">Action</p></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.StoreAddress)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.Id }, new { @class = "btn btn-success" })
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id }, new { @class = "btn btn-danger", onclick = "return confirm('Are you sure?');" })
+        </td>
+    </tr>
+}
+
+</table>
